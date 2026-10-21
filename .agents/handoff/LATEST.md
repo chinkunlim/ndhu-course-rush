@@ -5,17 +5,16 @@
 <!-- LIVE_STATE_START -->
 ## 📊 即時狀態看板 (Live Snapshot)
 
-- **最後更新時間**: `2026-10-21 17:10 UTC`
+- **最後更新時間**: `2026-10-21 17:12 UTC`
 - **最近操作 Agent**: `Antigravity`
 - **目前 Git 分支**: `main`
-- **最新 Git Commit**: `1c84276 chore(migration): convert dependencies and config templates [agent:Antigravity]`
+- **最新 Git Commit**: `0806c08 refactor(config): integrate course rush settings and legacy loader [agent:Antigravity]`
 
 ### 🎯 進行中 / 待接手任務 (Active & Handed-Off Tasks)
 
 | 任務 | 狀態 | 目前/上一位 Agent | 建議接手 | 相關範圍 | 已完成 | 待辦與卡點 |
 |---|---|---|---|---|---|---|
-| **TASK-002**<br/>遷移批次 2：config 層（設定、環境變數讀取） | 🟢 `in_progress` | `Antigravity` | `-` | `src/ndhu_course_rush/config/`, `legacy` | - | - |
-| **TASK-003**<br/>遷移批次 3：services 層（業務流程） | ⚪ `open` | `-` | `-` | `src/ndhu_course_rush/services/`, `legacy` | - | - |
+| **TASK-003**<br/>遷移批次 3：services 層（業務流程） | 🟢 `in_progress` | `Antigravity` | `-` | `src/ndhu_course_rush/services/`, `legacy` | - | - |
 | **TASK-004**<br/>遷移批次 4：entrypoints 層（CLI、HTTP、排程入口） | ⚪ `open` | `-` | `-` | `src/ndhu_course_rush/entrypoints/`, `legacy` | - | - |
 | **TASK-005**<br/>遷移批次 5：測試 | ⚪ `open` | `-` | `-` | `tests/`, `legacy` | - | - |
 | **TASK-006**<br/>遷移批次 6：文件（README、規格、決策、已知問題） | ⚪ `open` | `-` | `-` | `docs/PROMPT_TEMPLATES.md`, `docs/adr/`, `docs/architecture/ARCHITECTURE.md`, `docs/known-issues/`, `docs/specs/`, `docs/standards/PROJECT_RULES.md`, `evals/EVALS.md`, `legacy` | - | - |
@@ -24,6 +23,13 @@
 <!-- LIVE_STATE_END -->
 
 ## 📜 交接與活動時間軸 (Handoff & Activity Timeline)
+
+### [2026-10-21 17:12 UTC] 認領任務 `TASK-003` (遷移批次 3：services 層（業務流程）) (by `Antigravity`)
+- **相關範圍**: `src/ndhu_course_rush/services/, legacy`
+
+### [2026-10-21 17:12 UTC] 完成任務 `TASK-002` — 遷移批次 2：config 層（設定、環境變數讀取） (by `Antigravity`)
+- **狀態**: ✅ 已完成 (`done`)
+- **完成摘要**: 搬移並整理 config 層，支援 AppConfig 與 legacy config 讀取
 
 ### [2026-10-21 17:10 UTC] 認領任務 `TASK-002` (遷移批次 2：config 層（設定、環境變數讀取）) (by `Antigravity`)
 - **相關範圍**: `src/ndhu_course_rush/config/, legacy`

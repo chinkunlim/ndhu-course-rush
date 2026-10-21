@@ -106,7 +106,9 @@ ndhu-course-rush/
 │   └── TEMPLATE_FEEDBACK.md
 ├── legacy/                                 # [遷移中] 舊專案原始檔，逐批搬到新結構後刪除（見 docs/migration/MIGRATION.md）
 ├── scripts/                                # 【專案腳本】agentctl.py 是框架的單一入口；其餘放本專案自己的腳本
-│   └── agentctl.py                         # [單一入口] 轉呼叫 .agents/bin/agentctl.py
+│   ├── agentctl.py                         # [單一入口] 轉呼叫 .agents/bin/agentctl.py
+│   ├── audit_project.py
+│   └── auto_login.py
 ├── src/                                    # 【核心原始碼層】分層與依賴方向定義於 .agents/project.toml
 │   └── ndhu_course_rush/
 │       ├── adapters/
@@ -124,7 +126,11 @@ ndhu-course-rush/
 │       │   └── cli.py
 │       ├── services/
 │       │   ├── __init__.py
-│       │   └── greeting.py
+│       │   ├── auth.py
+│       │   ├── browser.py
+│       │   ├── greeting.py
+│       │   ├── parser.py
+│       │   └── selector.py
 │       └── __init__.py
 ├── tests/                                  # 【測試層】單元與整合測試
 │   ├── __init__.py
