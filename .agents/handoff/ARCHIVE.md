@@ -11,3 +11,7 @@
 ### [2026-10-21 17:00 UTC] 建立任務 `TASK-002`: 遷移批次 2：config 層（設定、環境變數讀取） (by `system`)
 - **狀態**: `open`
 - **相關範圍**: `src/ndhu_course_rush/config/, legacy`
+
+### [2026-10-21 17:00 UTC] 建立任務 `TASK-003`: 遷移批次 3：services 層（業務流程） (by `system`)
+- **狀態**: `open`
+- **相關範圍**: `src/ndhu_course_rush/services/, legacy`

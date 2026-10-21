@@ -5,10 +5,10 @@
 <!-- LIVE_STATE_START -->
 ## 📊 即時狀態看板 (Live Snapshot)
 
-- **最後更新時間**: `2026-10-21 17:43 UTC`
+- **最後更新時間**: `2026-10-21 17:45 UTC`
 - **最近操作 Agent**: `Antigravity`
 - **目前 Git 分支**: `main`
-- **最新 Git Commit**: `00a5f3e docs: document pending live verification and migrate credentials to .env [agent:Antigravity]`
+- **最新 Git Commit**: `94597b2 chore(tooling): update tooling tooling and config (TASK-001, TASK-002, TASK-003, TASK-007) [agent:Antigravity]`
 
 ### 🎯 進行中 / 待接手任務 (Active & Handed-Off Tasks)
 
@@ -17,6 +17,14 @@
 <!-- LIVE_STATE_END -->
 
 ## 📜 交接與活動時間軸 (Handoff & Activity Timeline)
+
+### [2026-10-21 17:45 UTC] Session Closeout (結束對話收尾) (by `Antigravity`)
+- **檢查結果**: 測試與 Code Review Guard 通過
+- **目標**: 全面檢核並更新所有 Markdown 文件、移轉帳密憑證至 .env 並標註實機選課測試狀態
+- **錯誤與根因**: 無重大程式錯誤；先前舊檔中存在 pytest 與 Makefile 過時命令參照，皆已校正為 unittest 與 agentctl
+- **下一步**: 等待東華大學選課系統正式開放時，使用真機 Chrome 執行端對端加選測試與名額驗證
+- **交接備註**: 專案已完成規範遷移與單元測試，帳密已就緒於 .env，待選課開放時進行線上實測
+- **本機對話紀錄**: `.agents/conversations/2026-10-22-0145-Antigravity-summary.md`（只在這台電腦）
 
 ### [2026-10-21 17:43 UTC] Session Closeout (結束對話收尾) (by `Antigravity`)
 - **檢查結果**: 測試與 Code Review Guard 通過
@@ -90,7 +98,3 @@
 ### [2026-10-21 17:00 UTC] 建立任務 `TASK-004`: 遷移批次 4：entrypoints 層（CLI、HTTP、排程入口） (by `system`)
 - **狀態**: `open`
 - **相關範圍**: `src/ndhu_course_rush/entrypoints/, legacy`
-
-### [2026-10-21 17:00 UTC] 建立任務 `TASK-003`: 遷移批次 3：services 層（業務流程） (by `system`)
-- **狀態**: `open`
-- **相關範圍**: `src/ndhu_course_rush/services/, legacy`
