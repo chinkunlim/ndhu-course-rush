@@ -123,7 +123,8 @@ ndhu-course-rush/
 │       │   └── models.py
 │       ├── entrypoints/
 │       │   ├── __init__.py
-│       │   └── cli.py
+│       │   ├── cli.py
+│       │   └── course_cli.py
 │       ├── services/
 │       │   ├── __init__.py
 │       │   ├── auth.py
@@ -143,6 +144,7 @@ ndhu-course-rush/
 ├── CHANGELOG.md                            # [版本歷史] commit 寫入 Unreleased；agentctl finish --tag 發布版本
 ├── CLAUDE.md                               # [Agent 轉接檔] Claude Code 入口，匯入 AGENTS.md (自動產生)
 ├── GEMINI.md                               # [Agent 轉接檔] Gemini CLI 入口，指向 AGENTS.md (自動產生)
+├── main.py
 ├── pyproject.toml                          # [PEP 621 單一真相來源] Python 中繼資料、依賴分組、pytest 與 ruff 設定
 └── README.md                               # [唯一 README] 專案入口、快速開始與文件索引
 ```
