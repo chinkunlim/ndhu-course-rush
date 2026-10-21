@@ -14,6 +14,8 @@
 
 > 目前無進行中或待接手任務。可執行 `python3 scripts/agentctl.py task create "任務名稱" --agent <name>` 建立任務。
 
+- **待辦提醒 / 實機測試說明**：全專案遷移與單元測試已完成，帳號密碼憑證已自舊 `config.txt` 移轉至本機 `.env`。因當前非東華大學加退選開放時段，尚未測試選課按鈕是否可於真機環境正常加選，待選課開放時需進行端對端線上實測。
+
 <!-- LIVE_STATE_END -->
 
 ## 📜 交接與活動時間軸 (Handoff & Activity Timeline)
