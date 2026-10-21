@@ -5,22 +5,28 @@
 <!-- LIVE_STATE_START -->
 ## 📊 即時狀態看板 (Live Snapshot)
 
-- **最後更新時間**: `2026-10-21 17:19 UTC`
+- **最後更新時間**: `2026-10-21 17:20 UTC`
 - **最近操作 Agent**: `Antigravity`
 - **目前 Git 分支**: `main`
-- **最新 Git Commit**: `4e2ddf2 refactor(entrypoints): integrate course rush CLI and root runner [agent:Antigravity]`
+- **最新 Git Commit**: `9f26471 test(migration): standardize test suite for config, parser, and CLI [agent:Antigravity]`
 
 ### 🎯 進行中 / 待接手任務 (Active & Handed-Off Tasks)
 
 | 任務 | 狀態 | 目前/上一位 Agent | 建議接手 | 相關範圍 | 已完成 | 待辦與卡點 |
 |---|---|---|---|---|---|---|
-| **TASK-005**<br/>遷移批次 5：測試 | 🟢 `in_progress` | `Antigravity` | `-` | `tests/`, `legacy` | - | - |
-| **TASK-006**<br/>遷移批次 6：文件（README、規格、決策、已知問題） | ⚪ `open` | `-` | `-` | `docs/PROMPT_TEMPLATES.md`, `docs/adr/`, `docs/architecture/ARCHITECTURE.md`, `docs/known-issues/`, `docs/specs/`, `docs/standards/PROJECT_RULES.md`, `evals/EVALS.md`, `legacy` | - | - |
+| **TASK-006**<br/>遷移批次 6：文件（README、規格、決策、已知問題） | 🟢 `in_progress` | `Antigravity` | `-` | `docs/PROMPT_TEMPLATES.md`, `docs/adr/`, `docs/architecture/ARCHITECTURE.md`, `docs/known-issues/`, `docs/specs/`, `docs/standards/PROJECT_RULES.md`, `evals/EVALS.md`, `legacy` | - | - |
 | **TASK-007**<br/>遷移批次 7：其他（資料、資源、需人工判斷） | ⚪ `open` | `-` | `-` | `docs/standards/PROJECT_RULES.md`, `legacy` | - | - |
 
 <!-- LIVE_STATE_END -->
 
 ## 📜 交接與活動時間軸 (Handoff & Activity Timeline)
+
+### [2026-10-21 17:20 UTC] 認領任務 `TASK-006` (遷移批次 6：文件（README、規格、決策、已知問題）) (by `Antigravity`)
+- **相關範圍**: `docs/PROMPT_TEMPLATES.md, docs/adr/, docs/architecture/ARCHITECTURE.md, docs/known-issues/, docs/specs/, docs/standards/PROJECT_RULES.md, evals/EVALS.md, legacy`
+
+### [2026-10-21 17:20 UTC] 完成任務 `TASK-005` — 遷移批次 5：測試 (by `Antigravity`)
+- **狀態**: ✅ 已完成 (`done`)
+- **完成摘要**: 搬移並重構測試套件（test_config.py、test_parser.py、test_cli.py），10 項測試全數通過
 
 ### [2026-10-21 17:19 UTC] 認領任務 `TASK-005` (遷移批次 5：測試) (by `Antigravity`)
 - **相關範圍**: `tests/, legacy`

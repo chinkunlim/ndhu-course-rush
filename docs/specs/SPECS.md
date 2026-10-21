@@ -1,12 +1,12 @@
-# 需求與規格 (Specs)
+# 功能規格 (Specifications)
 
-一個功能一份規格，先寫規格再實作；實作時在任務卡與 commit 中引用規格檔名。
+記錄專案的功能規格（PRD / API Contract）：需求、使用情境、介面與驗收標準。
 
-- 新增：複製 [`_TEMPLATE.md`](_TEMPLATE.md) 為 `NNN-<slug>.md`（例如 `001-login-api.md`），並在下表加一列。
+- 格式：[`_TEMPLATE.md`](_TEMPLATE.md)；檔名為 `NNN-<slug>.md`。
+- 狀態：`Draft`（草稿）／`Approved`（已核可）／`Implemented`（已實作）／`Deprecated`（已廢棄）。
 
-> 命名規則：`_TEMPLATE.md` 是新增紀錄時要照著寫的範本；紀錄檔命名為 `NNN-<slug>.md`。整個專案只有根目錄一份 `README.md`。
+## 總表
 
-## 規格清單
-
-| 規格 | 狀態 | 說明 |
-|---|---|---|
+| SPEC | 功能名稱 | 狀態 | 日期 | 相關任務 / ADR |
+|---|---|---|---|---|
+| [SPEC-001](001-course-selection-automation.md) | 東華大學自動選課與預排檢視 | Implemented | 2026-10-22 | TASK-006 / ADR-001 ~ 004 |

@@ -1,98 +1,109 @@
-# ndhu-course-rush
+# NDHU Course Rush (東華大學自動選課與預排檢視系統)
 
-AI-assisted software project with standard structure and agent handoff.
+> 國立東華大學（NDHU）學生專屬自動化選課與預排檢視輔助系統。以 **Playwright** 驅動真實 Chrome 瀏覽器，具備自動登入、評量彈窗解除、預排課表抓取與人數分析、以及本機 `courses_info.md` 雙向同步排程搶課等完整功能。
 
-> 請把上面兩行改寫成這個專案的說明（`agentctl finish` 會檢查）。以下是開發環境與日常操作。
+---
 
-## 第一次在這台電腦使用
+## 🌟 核心特點
 
-1. 取得程式（已經在本機就略過）
+1. 🖥️ **真機可視化運作 (Headed Chrome)**：啟動本地真實 Chrome 瀏覽器，完整掌握每個動作，絕非黑箱操作。
+2. 🛡️ **自動除障與彈窗處理**：登入時自動解除「教學意見評量」DIV 視窗，並智慧攔截並處理系統原生 JavaScript Alert 訊息。
+3. 📊 **預排課程動態同步**：登入後自動查詢預排課程，動態爬取每門課的「限修人數」、「已選人數」，計算「剩餘空位」並匯出為好看的 Markdown 表格。
+4. 📝 **Markdown 優先級志願序排程**：直接在 `courses_info.md` 最左側填寫志願序號碼（如 0, 1, 2...），系統將嚴格依據個人偏好依序加選。
+5. ⚡ **擬真人流極速調校**：具備 20ms~50ms 微延遲模擬，既能享有電競級點擊手速，又不易觸發伺服器高頻阻擋。
+6. 🎯 **離峰演練模式 (Dry-Run)**：非選課期間亦可安全執行完整預演，自動跳過未出現之加選按鈕，不拋錯崩潰。
 
-```bash
-git clone <repo-url> && cd ndhu-course-rush
+---
+
+## 📂 專案架構導覽
+
+```text
+ndhu-course-rush/
+├── pyproject.toml               # 現代化專案依賴與工具設定 (uv 管理)
+├── .env.example                 # 帳密配置範本 (複製為 .env)
+├── README.md                    # 專案首頁指南
+├── AGENTS.md                    # AI Agent 規範與協同指引
+├── CHANGELOG.md                 # 完整版本歷程記錄
+├── courses_info.md              # 預排課程清單與自訂順序檔案
+├── main.py                      # 根目錄執行入口
+│
+├── src/ndhu_course_rush/        # 核心原始碼 (單向分層)
+│   ├── config/                  # 設定層 (AppConfig, logging, legacy_config)
+│   ├── domain/                  # 領域模型 (Course, CoursePriority)
+│   ├── services/                # 業務邏輯 (auth, browser, parser, selector)
+│   └── entrypoints/             # 進入點 (CLI, main)
+│
+├── docs/                        # 架構、規格、ADR 與已知問題庫
+│   ├── adr/                     # 架構決策記錄 (ADR-001 ~ ADR-007)
+│   ├── architecture/            # 系統架構圖與目錄樹
+│   ├── known-issues/            # 已知問題與避坑指南 (ISSUE-001 ~ ISSUE-005)
+│   ├── specs/                   # 功能規格 (SPEC-001)
+│   └── standards/               # 工程規範與本專案專屬規則 (PROJECT_RULES.md)
+│
+├── scripts/                     # 專案腳本 (agentctl.py, auto_login.py)
+└── tests/                       # 單元測試套件
 ```
 
-2. 檢查並修復環境：啟用 git hook、建立 `.env`、建立 DATA_DIR、檢查 uv（只修這個專案，不安裝全域工具）
+---
 
+## 🚀 快速上手 (Quick Start)
+
+### 1. 必備環境
+- 作業系統：macOS / Linux / Windows
+- [uv](https://github.com/astral-sh/uv) (極速 Python 套件管理器)
+- Google Chrome 瀏覽器
+
+### 2. 安裝依賴與驅動
 ```bash
-python3 scripts/agentctl.py doctor --fix
+# 同步安裝專案虛擬環境與依賴
+uv sync
+
+# 安裝 Playwright 瀏覽器核心
+uv run playwright install chromium
 ```
 
-3. 打開 `.env` 填入金鑰與設定（`.env` 不會被 commit）。
-
-4. 安裝依賴：uv sync（專案內 `.venv/`）
-
+### 3. 設定帳號與密碼
+複製環境變數範本並填入東華學生證號碼與密碼：
 ```bash
-python3 scripts/agentctl.py setup --install
+cp .env.example .env
+```
+編輯 `.env`：
+```ini
+NDHU_USERNAME=411383***
+NDHU_PASSWORD=your_password_here
+LOGIN_URL=https://sys.ndhu.edu.tw/aa/class/subjselect/course_sele.aspx
 ```
 
-> 換電腦時：資料不在 git 裡，另外複製整個 `DATA_DIR`（路徑寫在 `.env`）。
-> 搬移或改名專案資料夾後：執行一次 `python3 scripts/agentctl.py doctor --fix`（重建記住舊位置的 `.venv`）。
+### 4. 執行程式
+您可透過以下任一方式啟動：
+```bash
+# 方式 A：透過 CLI 工具
+uv run ndhu-course-rush
 
-新增 Python 套件：`uv add <套件>`（開發工具 `uv add --dev <套件>`）；執行程式：`uv run ...`。Python 版本由 uv 依 `.python-version` 自動下載，不會動到主機的 Python / pip。
+# 方式 B：透過根目錄入口腳本
+uv run python main.py
 
-## 確認一切正常
+# 方式 C：僅查詢預排課表不搶課
+uv run ndhu-course-rush --query-only
+```
 
-註解、分層、秘密、lint、型別、目錄樹
+---
+
+## 🎮 選課操作流程簡述
+
+1. **自動登入**：程式啟動 Chrome 並自動登入東華選課系統。
+2. **查詢預排**：自動爬取預排清單中各科目限額與空位，輸出 `courses_info.md`。
+3. **設定志願序**：在 `courses_info.md` 最左側填寫志願序號（例如 0, 1, 2...）並存檔。
+4. **搶課衝刺**：終端輸入 `2`，系統將以極速微延遲自動完成加選！
+
+---
+
+## 🧪 執行測試與品質檢查
 
 ```bash
+# 執行所有單元測試
+uv run python -m unittest discover -s tests -v
+
+# 執行靜態程式碼審查與分層檢查
 python3 scripts/agentctl.py check
 ```
-
-專案測試
-
-```bash
-uv run python -m unittest discover -s tests -v
-```
-
-## 和 AI Agent 一起開發
-
-用 Claude Code、Antigravity、Cursor 等工具打開這個資料夾，Agent 會自動讀 `AGENTS.md`。直接用口語下指令：
-
-| 你說 | Agent 會做 |
-|---|---|
-| 「開工」「繼續上次的」 | 看交接看板、上次的下一步、未完成的任務 |
-| 「新功能：…」 | 建任務卡，寫測試與程式 |
-| 「commit」 | 檢查後本機 commit（英文訊息，不會推送） |
-| 「去上課」「先暫停」 | 記下進度，下次接著做 |
-| 「收工」 | 測試、寫對話紀錄與摘要、更新交接看板、commit |
-| 「推上去」 | 列出要推送的 commit，等你同意 |
-| 「出版本」「專案完成了」 | 完成驗收；`--tag` 時升版並打 tag |
-
-完整對照表見 [`AGENTS.md`](AGENTS.md) §1。
-
-## 常用指令
-
-```bash
-python3 scripts/agentctl.py status
-```
-
-```bash
-python3 scripts/agentctl.py task create "標題" --agent <名字>
-```
-
-```bash
-python3 scripts/agentctl.py commit --agent <名字>
-```
-
-```bash
-python3 scripts/agentctl.py closeout --agent <名字>
-```
-
-全部子指令
-
-```bash
-python3 scripts/agentctl.py --help
-```
-
-## 文件索引
-
-- [`AGENTS.md`](AGENTS.md) — Agent 規則與「文件放哪裡」對照表
-- [`.agents/handoff/LATEST.md`](.agents/handoff/LATEST.md) — 交接看板
-- `.agents/conversations/` — 每次對話的逐字稿與摘要（本機，不進 git）
-- [`docs/adr/DECISIONS.md`](docs/adr/DECISIONS.md) — 架構決策
-- [`docs/known-issues/KNOWN_ISSUES.md`](docs/known-issues/KNOWN_ISSUES.md) — 已知問題
-- [`docs/specs/SPECS.md`](docs/specs/SPECS.md) — 需求規格
-- [`docs/architecture/ARCHITECTURE.md`](docs/architecture/ARCHITECTURE.md) — 系統架構與目錄樹（依賴圖、審計報告需要時用 `agentctl graph` / `agentctl audit` 產生）
-- [`docs/standards/PROJECT_RULES.md`](docs/standards/PROJECT_RULES.md) — 本專案特有的規則
-- [`CHANGELOG.md`](CHANGELOG.md) — 版本變更

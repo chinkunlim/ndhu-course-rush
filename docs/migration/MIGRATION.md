@@ -104,42 +104,42 @@ uv tree
 | ☑ | `legacy/tests/__init__.py` | `tests/` | tests |
 | ☑ | `legacy/tests/test_config.py` | `tests/` | tests |
 | ☑ | `legacy/tests/test_parser.py` | `tests/` | tests |
-| ☐ | `legacy/.github/CONTRIBUTING.md` | `docs/standards/PROJECT_RULES.md（只留本專案特有的規則；通用規則已在 AGENTS.md / standards）` | docs |
-| ☐ | `legacy/.github/SECURITY.md` | `README.md 的安全說明，或 docs/standards/PROJECT_RULES.md` | docs |
-| ☐ | `legacy/AGENTS.md` | `docs/standards/PROJECT_RULES.md（只留本專案特有的規則；通用規則已在 AGENTS.md / standards）` | docs |
-| ☐ | `legacy/CHANGELOG.md` | `CHANGELOG.md（舊版本紀錄貼在 0.1.0 下方，保留原日期）` | docs |
-| ☐ | `legacy/DECISIONS.md` | `docs/adr/（每個決策拆成一個 NNN-*.md，用 adr-issue-tracker）` | docs |
-| ☐ | `legacy/KNOWN_ISSUES.md` | `docs/known-issues/（每個問題一個 NNN-*.md）` | docs |
-| ☐ | `legacy/README.md` | `README.md（改寫成新專案的說明）` | docs |
-| ☐ | `legacy/WORKFLOW_GUIDE.md` | `docs/standards/PROJECT_RULES.md（只留本專案特有的規則；通用規則已在 AGENTS.md / standards）` | docs |
-| ☐ | `legacy/conversations/completed/001_playwright_and_login.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/completed/002_dialog_and_course_query.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/completed/003_markdown_table_and_seat_count.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/completed/004_selection_strategy_and_dryrun.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/completed/005_delay_tuning_and_human_speed.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/completed/006_project_standardization.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/completed/007_project_alignment_check.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/raw/001_playwright_and_login.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/raw/002_dialog_and_course_query.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/raw/003_markdown_table_and_seat_count.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/raw/004_selection_strategy_and_dryrun.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/raw/005_delay_tuning_and_human_speed.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/raw/006_project_standardization.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/raw/007_project_alignment_check.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/summaries/001_playwright_and_login_summary.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/summaries/002_dialog_and_course_query_summary.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/summaries/003_markdown_table_and_seat_count_summary.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/summaries/004_selection_strategy_and_dryrun_summary.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/summaries/005_delay_tuning_and_human_speed_summary.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/summaries/006_project_standardization_summary.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/conversations/summaries/007_project_alignment_check_summary.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
-| ☐ | `legacy/courses_info.md` | `README.md / docs/specs/ / docs/architecture/ARCHITECTURE.md` | docs |
-| ☐ | `legacy/docs/ARCHITECTURE.md` | `docs/architecture/ARCHITECTURE.md` | docs |
-| ☐ | `legacy/docs/CONTEXT.md` | `docs/specs/ 或 docs/adr/ 或 docs/known-issues/` | docs |
-| ☐ | `legacy/docs/DEPLOYMENT.md` | `docs/specs/ 或 docs/adr/ 或 docs/known-issues/` | docs |
-| ☐ | `legacy/docs/PROMPT_TEMPLATES.md` | `docs/PROMPT_TEMPLATES.md` | docs |
-| ☐ | `legacy/docs/TOOLS.md` | `docs/specs/ 或 docs/adr/ 或 docs/known-issues/` | docs |
-| ☐ | `legacy/evals/README.md` | `evals/EVALS.md（全專案只有根目錄一份 README）` | docs |
+| ☑ | `legacy/.github/CONTRIBUTING.md` | `docs/standards/PROJECT_RULES.md（只留本專案特有的規則；通用規則已在 AGENTS.md / standards）` | docs |
+| ☑ | `legacy/.github/SECURITY.md` | `README.md 的安全說明，或 docs/standards/PROJECT_RULES.md` | docs |
+| ☑ | `legacy/AGENTS.md` | `docs/standards/PROJECT_RULES.md（只留本專案特有的規則；通用規則已在 AGENTS.md / standards）` | docs |
+| ☑ | `legacy/CHANGELOG.md` | `CHANGELOG.md（舊版本紀錄貼在 0.1.0 下方，保留原日期）` | docs |
+| ☑ | `legacy/DECISIONS.md` | `docs/adr/（每個決策拆成一個 NNN-*.md，用 adr-issue-tracker）` | docs |
+| ☑ | `legacy/KNOWN_ISSUES.md` | `docs/known-issues/（每個問題一個 NNN-*.md）` | docs |
+| ☑ | `legacy/README.md` | `README.md（改寫成新專案的說明）` | docs |
+| ☑ | `legacy/WORKFLOW_GUIDE.md` | `docs/standards/PROJECT_RULES.md（只留本專案特有的規則；通用規則已在 AGENTS.md / standards）` | docs |
+| ☑ | `legacy/conversations/completed/001_playwright_and_login.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/completed/002_dialog_and_course_query.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/completed/003_markdown_table_and_seat_count.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/completed/004_selection_strategy_and_dryrun.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/completed/005_delay_tuning_and_human_speed.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/completed/006_project_standardization.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/completed/007_project_alignment_check.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/raw/001_playwright_and_login.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/raw/002_dialog_and_course_query.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/raw/003_markdown_table_and_seat_count.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/raw/004_selection_strategy_and_dryrun.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/raw/005_delay_tuning_and_human_speed.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/raw/006_project_standardization.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/raw/007_project_alignment_check.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/summaries/001_playwright_and_login_summary.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/summaries/002_dialog_and_course_query_summary.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/summaries/003_markdown_table_and_seat_count_summary.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/summaries/004_selection_strategy_and_dryrun_summary.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/summaries/005_delay_tuning_and_human_speed_summary.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/summaries/006_project_standardization_summary.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/conversations/summaries/007_project_alignment_check_summary.md` | `決策 → docs/adr/、錯誤根因 → docs/known-issues/；原檔移到 .agents/conversations/（只存本機，不進 git）` | docs |
+| ☑ | `legacy/courses_info.md` | `README.md / docs/specs/ / docs/architecture/ARCHITECTURE.md` | docs |
+| ☑ | `legacy/docs/ARCHITECTURE.md` | `docs/architecture/ARCHITECTURE.md` | docs |
+| ☑ | `legacy/docs/CONTEXT.md` | `docs/specs/ 或 docs/adr/ 或 docs/known-issues/` | docs |
+| ☑ | `legacy/docs/DEPLOYMENT.md` | `docs/specs/ 或 docs/adr/ 或 docs/known-issues/` | docs |
+| ☑ | `legacy/docs/PROMPT_TEMPLATES.md` | `docs/PROMPT_TEMPLATES.md` | docs |
+| ☑ | `legacy/docs/TOOLS.md` | `docs/specs/ 或 docs/adr/ 或 docs/known-issues/` | docs |
+| ☑ | `legacy/evals/README.md` | `evals/EVALS.md（全專案只有根目錄一份 README）` | docs |
 | ☐ | `legacy/.cursorrules` | `docs/standards/PROJECT_RULES.md（只留本專案特有的規則；各工具入口檔由 agentctl sync 產生）` | other |
 | ☐ | `legacy/.github/workflows/ci.yml` | `比對模板產生的 .github/workflows/ci.yml，只併入本專案特有的步驟` | other |
 | ☐ | `legacy/.vscode/launch.json` | `比對模板產生的 .vscode/，只保留本專案特有的 launch / settings` | other |

@@ -81,17 +81,30 @@ ndhu-course-rush/
 │       └── 00-project-constitution.md
 ├── docs/                                   # 【工程知識庫】架構、規格、決策、已知問題、維運、規範
 │   ├── adr/                                # [架構決策庫] 一決定一檔案
+│   │   ├── 001-playwright-sync.md
+│   │   ├── 002-headed-chrome.md
+│   │   ├── 003-markdown-priority-interface.md
+│   │   ├── 004-tiered-latency.md
+│   │   ├── 005-credential-isolation.md
+│   │   ├── 006-modern-layout-and-uv.md
+│   │   ├── 007-project-alignment.md
 │   │   ├── _TEMPLATE.md                    # ADR 範本 (tracker_cli 會套用)
 │   │   └── DECISIONS.md                    # 架構決策總表
 │   ├── architecture/                       # [系統架構與資料模型]
 │   │   ├── ARCHITECTURE.md                 # 系統架構總覽 (手動) 與自動報告索引
 │   │   └── PROJECT_TREE.md                 # 完整檔案結構樹 (自動產生)
 │   ├── known-issues/                       # [已知問題庫] 一問題一檔案
+│   │   ├── 001-aspnet-postback-race-condition.md
+│   │   ├── 002-teaching-eval-modal-dismissal.md
+│   │   ├── 003-missing-buttons-in-offpeak.md
+│   │   ├── 004-terminal-print-latency.md
+│   │   ├── 005-playwright-shutdown-cleanup.md
 │   │   ├── _TEMPLATE.md                    # 已知問題範本 (tracker_cli 會套用)
 │   │   └── KNOWN_ISSUES.md                 # 已知問題總表 (🔴/🟡/🟢)
 │   ├── migration/                          # [遷移紀錄] 舊專案搬移清單、批次與完成標準
 │   │   └── MIGRATION.md
 │   ├── specs/                              # [功能規格書] PRD / API Contract
+│   │   ├── 001-course-selection-automation.md
 │   │   ├── _TEMPLATE.md                    # 規格範本
 │   │   └── SPECS.md                        # 規格清單
 │   ├── standards/                          # [工程規範] 依任務載入 (Progressive Disclosure)
@@ -103,7 +116,10 @@ ndhu-course-rush/
 │   │   ├── MULTI_AGENT_COLLABORATION.md    # Agent 輪流接力：開工、交接、收尾與溯源
 │   │   ├── PROJECT_RULES.md
 │   │   └── TESTING_AND_QUALITY.md          # 測試金字塔與 DoD 驗收清單
+│   ├── PROMPT_TEMPLATES.md
 │   └── TEMPLATE_FEEDBACK.md
+├── evals/
+│   └── EVALS.md
 ├── legacy/                                 # [遷移中] 舊專案原始檔，逐批搬到新結構後刪除（見 docs/migration/MIGRATION.md）
 ├── scripts/                                # 【專案腳本】agentctl.py 是框架的單一入口；其餘放本專案自己的腳本
 │   ├── agentctl.py                         # [單一入口] 轉呼叫 .agents/bin/agentctl.py
@@ -144,6 +160,7 @@ ndhu-course-rush/
 ├── AGENTS.md                               # [AI 協作憲法・唯一規則來源] 所有 AI Agent 共用的開發原則與 Skills 路由
 ├── CHANGELOG.md                            # [版本歷史] commit 寫入 Unreleased；agentctl finish --tag 發布版本
 ├── CLAUDE.md                               # [Agent 轉接檔] Claude Code 入口，匯入 AGENTS.md (自動產生)
+├── courses_info.md
 ├── GEMINI.md                               # [Agent 轉接檔] Gemini CLI 入口，指向 AGENTS.md (自動產生)
 ├── main.py
 ├── pyproject.toml                          # [PEP 621 單一真相來源] Python 中繼資料、依賴分組、pytest 與 ruff 設定
