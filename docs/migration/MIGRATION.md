@@ -101,9 +101,9 @@ uv tree
 | ☑ | `legacy/src/ndhu_course_selector/tools/__init__.py` | `src/ndhu_course_rush/services/` | services |
 | ☑ | `legacy/main.py` | `src/ndhu_course_rush/entrypoints/` | entrypoints |
 | ☑ | `legacy/src/ndhu_course_selector/cli.py` | `src/ndhu_course_rush/entrypoints/` | entrypoints |
-| ☐ | `legacy/tests/__init__.py` | `tests/` | tests |
-| ☐ | `legacy/tests/test_config.py` | `tests/` | tests |
-| ☐ | `legacy/tests/test_parser.py` | `tests/` | tests |
+| ☑ | `legacy/tests/__init__.py` | `tests/` | tests |
+| ☑ | `legacy/tests/test_config.py` | `tests/` | tests |
+| ☑ | `legacy/tests/test_parser.py` | `tests/` | tests |
 | ☐ | `legacy/.github/CONTRIBUTING.md` | `docs/standards/PROJECT_RULES.md（只留本專案特有的規則；通用規則已在 AGENTS.md / standards）` | docs |
 | ☐ | `legacy/.github/SECURITY.md` | `README.md 的安全說明，或 docs/standards/PROJECT_RULES.md` | docs |
 | ☐ | `legacy/AGENTS.md` | `docs/standards/PROJECT_RULES.md（只留本專案特有的規則；通用規則已在 AGENTS.md / standards）` | docs |

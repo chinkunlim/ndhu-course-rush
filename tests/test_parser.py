@@ -1,9 +1,12 @@
 """Tests for Markdown parsing and priority extraction."""
 
+from __future__ import annotations
+
 import os
 import tempfile
-from ndhu_course_selector.core.parser import parse_markdown_priorities, write_courses_markdown
+import unittest
 
+from ndhu_course_rush.services.parser import parse_markdown_priorities, write_courses_markdown
 
 SAMPLE_MD = """# 預排課程與人數清單
 
@@ -18,46 +21,52 @@ SAMPLE_MD = """# 預排課程與人數清單
 """
 
 
-def test_parse_markdown_priorities():
-    """Verify parsing and sorting of user priorities from Markdown table."""
-    with tempfile.NamedTemporaryFile("w+", encoding="utf-8", delete=False) as f:
-        f.write(SAMPLE_MD)
-        tmp_name = f.name
+class ParserTest(unittest.TestCase):
+    """Test markdown course generation and priority parsing."""
 
-    try:
-        priorities = parse_markdown_priorities(tmp_name)
-        assert len(priorities) == 3
-        # Should be sorted: priority 0 (index 0), priority 1 (index 3), priority 2 (index 1)
-        assert priorities[0] == {"priority": 0, "index": 0}
-        assert priorities[1] == {"priority": 1, "index": 3}
-        assert priorities[2] == {"priority": 2, "index": 1}
-    finally:
-        if os.path.exists(tmp_name):
-            os.remove(tmp_name)
+    def test_parse_markdown_priorities(self) -> None:
+        """Verify parsing and sorting of user priorities from Markdown table."""
+        with tempfile.NamedTemporaryFile("w+", encoding="utf-8", delete=False) as f:
+            f.write(SAMPLE_MD)
+            tmp_name = f.name
+
+        try:
+            priorities = parse_markdown_priorities(tmp_name)
+            self.assertEqual(len(priorities), 3)
+            # Should be sorted: priority 0 (index 0), priority 1 (index 3), priority 2 (index 1)
+            self.assertEqual(priorities[0], {"priority": 0, "index": 0})
+            self.assertEqual(priorities[1], {"priority": 1, "index": 3})
+            self.assertEqual(priorities[2], {"priority": 2, "index": 1})
+        finally:
+            if os.path.exists(tmp_name):
+                os.remove(tmp_name)
+
+    def test_write_courses_markdown(self) -> None:
+        """Verify writing course data into markdown format."""
+        dummy_data = [
+            {
+                "index": 0,
+                "code": "TEST_101",
+                "name": "測試課程",
+                "limit": 50,
+                "enrolled": 20,
+                "remaining": 30,
+            }
+        ]
+        with tempfile.NamedTemporaryFile("w+", encoding="utf-8", delete=False) as f:
+            tmp_name = f.name
+
+        try:
+            write_courses_markdown(dummy_data, tmp_name)
+            with open(tmp_name, encoding="utf-8") as f:
+                content = f.read()
+            self.assertIn("TEST_101", content)
+            self.assertIn("測試課程", content)
+            self.assertIn("搶課順序", content)
+        finally:
+            if os.path.exists(tmp_name):
+                os.remove(tmp_name)
 
 
-def test_write_courses_markdown():
-    """Verify writing course data into markdown format."""
-    dummy_data = [
-        {
-            "index": 0,
-            "code": "TEST_101",
-            "name": "測試課程",
-            "limit": 50,
-            "enrolled": 20,
-            "remaining": 30
-        }
-    ]
-    with tempfile.NamedTemporaryFile("w+", encoding="utf-8", delete=False) as f:
-        tmp_name = f.name
-
-    try:
-        write_courses_markdown(dummy_data, tmp_name)
-        with open(tmp_name, "r", encoding="utf-8") as f:
-            content = f.read()
-        assert "TEST_101" in content
-        assert "測試課程" in content
-        assert "搶課順序" in content
-    finally:
-        if os.path.exists(tmp_name):
-            os.remove(tmp_name)
+if __name__ == "__main__":
+    unittest.main()

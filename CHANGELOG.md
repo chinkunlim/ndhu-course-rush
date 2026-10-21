@@ -10,6 +10,9 @@ All notable changes to **ndhu-course-rush** are documented here
 - refactor(services): modernize course automation services and domain models (by `@Antigravity`)
 - refactor(entrypoints): integrate course rush CLI and root runner (by `@Antigravity`)
 
+### Testing
+- test(migration): standardize test suite for config, parser, and CLI (by `@Antigravity`)
+
 ### Chore
 - chore(migration): convert dependencies and config templates (by `@Antigravity`)
 
