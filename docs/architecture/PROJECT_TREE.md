@@ -113,6 +113,7 @@ ndhu-course-rush/
 │       │   └── __init__.py
 │       ├── config/
 │       │   ├── __init__.py
+│       │   ├── legacy_config.py
 │       │   ├── logging_setup.py
 │       │   └── settings.py
 │       ├── domain/
