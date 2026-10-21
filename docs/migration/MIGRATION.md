@@ -90,15 +90,15 @@ uv tree
 | ☑ | `legacy/.python-version` | `pyproject.toml / package.json / .env.example（轉換後刪除舊檔）` | deps |
 | ☑ | `legacy/pyproject.toml` | `pyproject.toml / package.json / .env.example（轉換後刪除舊檔）` | deps |
 | ☑ | `legacy/src/ndhu_course_selector/tools/config.py` | `src/ndhu_course_rush/config/` | config |
-| ☐ | `legacy/audit_project.py` | `src/ndhu_course_rush/services/` | services |
-| ☐ | `legacy/auto_login.py` | `src/ndhu_course_rush/services/` | services |
-| ☐ | `legacy/src/ndhu_course_selector/__init__.py` | `src/ndhu_course_rush/services/` | services |
-| ☐ | `legacy/src/ndhu_course_selector/core/__init__.py` | `src/ndhu_course_rush/services/` | services |
-| ☐ | `legacy/src/ndhu_course_selector/core/auth.py` | `src/ndhu_course_rush/services/` | services |
-| ☐ | `legacy/src/ndhu_course_selector/core/browser.py` | `src/ndhu_course_rush/services/` | services |
-| ☐ | `legacy/src/ndhu_course_selector/core/parser.py` | `src/ndhu_course_rush/services/` | services |
-| ☐ | `legacy/src/ndhu_course_selector/core/selector.py` | `src/ndhu_course_rush/services/` | services |
-| ☐ | `legacy/src/ndhu_course_selector/tools/__init__.py` | `src/ndhu_course_rush/services/` | services |
+| ☑ | `legacy/audit_project.py` | `src/ndhu_course_rush/services/` | services |
+| ☑ | `legacy/auto_login.py` | `src/ndhu_course_rush/services/` | services |
+| ☑ | `legacy/src/ndhu_course_selector/__init__.py` | `src/ndhu_course_rush/services/` | services |
+| ☑ | `legacy/src/ndhu_course_selector/core/__init__.py` | `src/ndhu_course_rush/services/` | services |
+| ☑ | `legacy/src/ndhu_course_selector/core/auth.py` | `src/ndhu_course_rush/services/` | services |
+| ☑ | `legacy/src/ndhu_course_selector/core/browser.py` | `src/ndhu_course_rush/services/` | services |
+| ☑ | `legacy/src/ndhu_course_selector/core/parser.py` | `src/ndhu_course_rush/services/` | services |
+| ☑ | `legacy/src/ndhu_course_selector/core/selector.py` | `src/ndhu_course_rush/services/` | services |
+| ☑ | `legacy/src/ndhu_course_selector/tools/__init__.py` | `src/ndhu_course_rush/services/` | services |
 | ☐ | `legacy/main.py` | `src/ndhu_course_rush/entrypoints/` | entrypoints |
 | ☐ | `legacy/src/ndhu_course_selector/cli.py` | `src/ndhu_course_rush/entrypoints/` | entrypoints |
 | ☐ | `legacy/tests/__init__.py` | `tests/` | tests |

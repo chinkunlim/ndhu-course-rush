@@ -1,32 +1,141 @@
 """Course table parsing and markdown synchronization."""
 
-import os
+from __future__ import annotations
+
+import logging
 import re
 import time
-import random
-from typing import Dict, List, Any
-from playwright.sync_api import Page, TimeoutError as PlaywrightTimeoutError
+from collections.abc import Sequence
+from pathlib import Path
+from typing import Any
+
+from playwright.sync_api import Locator, Page
+from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+
+from ndhu_course_rush.domain.models import Course
+
+logger = logging.getLogger(__name__)
+
+
+def _poll_alert_message(alert_box: dict[str, Any]) -> str | None:
+    """Wait briefly for native dialog text.
+
+    Args:
+        alert_box: Shared dict containing dialog text.
+
+    Returns:
+        Captured text or None.
+    """
+    for _ in range(20):
+        if alert_box.get("text") is not None:
+            text = str(alert_box["text"]).replace("\n", " ")
+            return text
+        time.sleep(0.05)
+    return None
+
+
+def _dismiss_jquery_dialog(page: Page) -> str:
+    """Extract and dismiss jQuery UI dialog if present.
+
+    Args:
+        page: Playwright Page instance.
+
+    Returns:
+        Extracted dialog text.
+    """
+    try:
+        dialog_content = page.locator(".ui-dialog:visible .ui-dialog-content").first
+        if dialog_content.is_visible(timeout=500):
+            text = dialog_content.inner_text().strip().replace("\n", " ")
+            ok_btn = page.locator(".ui-dialog:visible .ui-dialog-buttonset button").first
+            ok_btn.click()
+            return text
+    except Exception:
+        pass
+    return "未知"
+
+
+def _query_enrolled_count(page: Page, code_el: Locator, alert_box: dict[str, Any]) -> int:
+    """Click course code link and parse enrolled student count from dialog.
+
+    Args:
+        page: Playwright Page instance.
+        code_el: Locator for the course code link.
+        alert_box: Shared dict containing native dialog text.
+
+    Returns:
+        Number of enrolled students.
+    """
+    alert_box["text"] = None
+    code_el.click()
+    text = _poll_alert_message(alert_box) or _dismiss_jquery_dialog(page)
+    numbers = re.findall(r"\d+", text)
+    return int(numbers[-1]) if numbers else 0
+
+
+def _parse_row(page: Page, index: int, alert_box: dict[str, Any]) -> Course:
+    """Parse one table row into a Course object.
+
+    Args:
+        page: Playwright Page instance.
+        index: Zero-based row index.
+        alert_box: Shared dict containing dialog text.
+
+    Returns:
+        Populated Course object.
+    """
+    row = page.locator("#ContentPlaceHolder1_grd_subjs tr:has(td)").nth(index)
+    code_el = row.locator("td:nth-child(2) a")
+    name_el = row.locator("td:nth-child(3)")
+    limit_el = row.locator("td:nth-child(10)")
+
+    code_text = code_el.inner_text().strip()
+    name_text = name_el.inner_text().strip().split("\n")[0]
+    limit_text = limit_el.inner_text().strip()
+    limit_int = int(limit_text) if limit_text.isdigit() else 0
+
+    enrolled = _query_enrolled_count(page, code_el, alert_box)
+    remaining = max(0, limit_int - enrolled)
+    logger.info(
+        "[%d] %s - %s (limit=%d, enrolled=%d, remaining=%d)",
+        index,
+        code_text,
+        name_text,
+        limit_int,
+        enrolled,
+        remaining,
+    )
+    return Course(
+        index=index,
+        code=code_text,
+        name=name_text,
+        limit=limit_int,
+        enrolled=enrolled,
+        remaining=remaining,
+    )
 
 
 def query_and_parse_courses(
     page: Page,
-    alert_msg_box: Dict[str, Any],
-    md_filename: str = "courses_info.md"
-) -> List[Dict[str, Any]]:
-    """Clicks 'Query Pre-scheduled Courses', scrapes capacity, and exports to markdown."""
-    print("\n▶️  開始處理預排課程...")
-    
-    # 1. Click Query Button
+    alert_box: dict[str, Any],
+    md_filename: str = "courses_info.md",
+) -> list[Course]:
+    """Click 'Query Pre-scheduled Courses', extract data, and export to markdown.
+
+    Args:
+        page: Playwright Page instance.
+        alert_box: Container for native alert message handling.
+        md_filename: Output markdown file name.
+
+    Returns:
+        List of parsed Course models.
+    """
+    logger.info("Starting course query on NDHU portal")
     query_btn = page.locator("#ContentPlaceHolder1_Button7")
     query_btn.wait_for(state="visible", timeout=5000)
     query_btn.click()
-    print("   ✅ 已點擊「查詢預排課程」")
 
-    print("   ⏳ 等待表格資料載入中...")
-    time.sleep(1)
     page.wait_for_load_state("networkidle")
-
-    # 2. Wait for table
     table = page.locator("#ContentPlaceHolder1_grd_subjs")
     table.wait_for(state="visible", timeout=10000)
 
@@ -35,114 +144,85 @@ def query_and_parse_courses(
     except PlaywrightTimeoutError:
         pass
 
-    time.sleep(0.5)
     row_count = table.locator("tr:has(td)").count()
-    print(f"   ✅ 表格已載入，共有 {row_count} 列資料。準備依序查詢已選課人數...")
+    logger.info("Course table loaded with %d rows", row_count)
 
-    course_data = []
-    for i in range(row_count):
-        current_row = page.locator("#ContentPlaceHolder1_grd_subjs tr:has(td)").nth(i)
-        code_el = current_row.locator("td:nth-child(2) a")
-        name_el = current_row.locator("td:nth-child(3)")
-        limit_el = current_row.locator("td:nth-child(10)")
-
-        code_text = code_el.inner_text().strip()
-        name_text = name_el.inner_text().strip().split("\n")[0]
-        limit_text = limit_el.inner_text().strip()
-
-        try:
-            limit_int = int(limit_text)
-        except ValueError:
-            limit_int = 0
-
-        # Query enrolled count via dialog
-        alert_msg_box["text"] = None
-        code_el.click()
-
-        enrolled_text = "未知"
-        for _ in range(30):
-            if alert_msg_box["text"] is not None:
-                enrolled_text = alert_msg_box["text"].replace("\n", " ")
-                break
-            time.sleep(0.05)
-
-        if alert_msg_box["text"] is None:
-            try:
-                dialog_content = page.locator(".ui-dialog:visible .ui-dialog-content").first
-                if dialog_content.is_visible(timeout=500):
-                    enrolled_text = dialog_content.inner_text().strip().replace("\n", " ")
-                    ok_btn = page.locator(".ui-dialog:visible .ui-dialog-buttonset button").first
-                    ok_btn.click()
-            except Exception:
-                pass
-
-        enrolled_int = 0
-        numbers = re.findall(r"\d+", enrolled_text)
-        if numbers:
-            enrolled_int = int(numbers[-1])
-
-        remaining_seats = max(0, limit_int - enrolled_int)
-
-        course_data.append({
-            "index": i,
-            "code": code_text,
-            "name": name_text,
-            "limit": limit_int,
-            "enrolled": enrolled_int,
-            "remaining": remaining_seats
-        })
-
-        print(f"   [{i}] {code_text} - {name_text}")
-        print(f"       -> [系統訊息擷取] {enrolled_text}")
-        print(f"       -> 限修: {limit_int}, 已選: {enrolled_int}, 空位: {remaining_seats}")
-
-        time.sleep(random.uniform(0.5, 1.5))
-
-    # Write courses_info.md
-    write_courses_markdown(course_data, md_filename)
-    return course_data
+    courses = [_parse_row(page, i, alert_box) for i in range(row_count)]
+    write_courses_markdown(courses, md_filename)
+    return courses
 
 
-def write_courses_markdown(course_data: List[Dict[str, Any]], filename: str = "courses_info.md") -> None:
-    """Writes course data into standard markdown table format."""
-    md_content = "# 預排課程與人數清單\n\n"
-    md_content += "> 💡 **使用說明**：請在最左邊的「搶課順序」欄位填寫數字（例如 1, 2, 3...）。\n"
-    md_content += "> 數字越小代表越優先搶，不想選的課程請保持空白即可。排好後記得存檔，然後在終端機輸入 `2` 載入此設定。\n\n"
-    md_content += "| 搶課順序 | 原編號 | 課程代碼 | 限修人數 | 已選人數 | 剩餘空位 | 課程名稱 |\n"
-    md_content += "| :---: | :---: | :--- | :---: | :---: | :---: | :--- |\n"
-    for c in course_data:
-        md_content += f"|  | **{c['index']}** | `{c['code']}` | {c['limit']} | {c['enrolled']} | **{c['remaining']}** | {c['name']} |\n"
+def _format_markdown_row(item: Any) -> str:
+    """Format one course record into a markdown table row.
 
-    try:
-        with open(filename, "w", encoding="utf-8") as f:
-            f.write(md_content)
-        print(f"\n✅ 課程資訊已成功輸出至 markdown 檔案: {os.path.abspath(filename)}")
-    except Exception as e:
-        print(f"\n⚠️ 無法寫入 markdown 檔案: {e}")
+    Args:
+        item: Course model or dictionary containing course fields.
 
-
-def parse_markdown_priorities(filepath: str) -> List[Dict[str, int]]:
-    """Parses priority mapping from courses_info.md file.
-
-    Returns a sorted list of dicts: [{'priority': int, 'index': int}, ...]
+    Returns:
+        Markdown table row string.
     """
-    priority_map: List[Dict[str, int]] = []
-    if not os.path.exists(filepath):
-        return priority_map
+    idx = getattr(item, "index", item["index"] if isinstance(item, dict) else 0)
+    code = getattr(item, "code", item["code"] if isinstance(item, dict) else "")
+    limit = getattr(item, "limit", item["limit"] if isinstance(item, dict) else 0)
+    enrolled = getattr(item, "enrolled", item["enrolled"] if isinstance(item, dict) else 0)
+    remaining = getattr(item, "remaining", item["remaining"] if isinstance(item, dict) else 0)
+    name = getattr(item, "name", item["name"] if isinstance(item, dict) else "")
+    return f"|  | **{idx}** | `{code}` | {limit} | {enrolled} | **{remaining}** | {name} |\n"
 
-    with open(filepath, "r", encoding="utf-8") as f:
-        for line in f:
-            line = line.strip()
-            if line.startswith("|") and "原編號" not in line and ":---" not in line:
-                parts = line.split("|")
-                if len(parts) >= 3:
-                    priority_str = parts[1].replace("*", "").strip()
-                    index_str = parts[2].replace("*", "").strip()
-                    if priority_str.isdigit() and index_str.isdigit():
-                        priority_map.append({
-                            "priority": int(priority_str),
-                            "index": int(index_str)
-                        })
 
-    priority_map.sort(key=lambda x: x["priority"])
-    return priority_map
+def write_courses_markdown(
+    courses: Sequence[Any],
+    filename: str = "courses_info.md",
+) -> None:
+    """Write course data into standard markdown table format.
+
+    Args:
+        courses: Sequence of Course models or dictionaries.
+        filename: Destination markdown file path.
+    """
+    usage_note = (
+        "> 數字越小代表越優先搶，不想選的課程請保持空白即可。"
+        "排好後記得存檔，然後在終端機輸入 `2` 載入此設定。\n\n"
+    )
+    lines = [
+        "# 預排課程與人數清單\n\n",
+        "> 💡 **使用說明**：請在最左邊的「搶課順序」欄位填寫數字（例如 1, 2, 3...）。\n",
+        usage_note,
+        "| 搶課順序 | 原編號 | 課程代碼 | 限修人數 | 已選人數 | 剩餘空位 | 課程名稱 |\n",
+        "| :---: | :---: | :--- | :---: | :---: | :---: | :--- |\n",
+    ]
+    lines.extend(_format_markdown_row(c) for c in courses)
+    content = "".join(lines)
+    try:
+        Path(filename).write_text(content, encoding="utf-8")
+        logger.info("Course info exported to markdown: %s", filename)
+    except Exception as exc:
+        logger.warning("Failed to write course markdown file: %s", exc)
+
+
+def parse_markdown_priorities(filepath: str) -> list[dict[str, int]]:
+    """Parse user-configured priority rankings from markdown table.
+
+    Args:
+        filepath: Path to courses_info.md.
+
+    Returns:
+        Sorted list of priority dictionaries: [{'priority': int, 'index': int}, ...].
+    """
+    path = Path(filepath)
+    if not path.is_file():
+        return []
+    priorities: list[dict[str, int]] = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        stripped = line.strip()
+        if not stripped.startswith("|") or "原編號" in stripped or ":---" in stripped:
+            continue
+        parts = stripped.split("|")
+        if len(parts) < 3:
+            continue
+        p_str = parts[1].replace("*", "").strip()
+        i_str = parts[2].replace("*", "").strip()
+        if p_str.isdigit() and i_str.isdigit():
+            priorities.append({"priority": int(p_str), "index": int(i_str)})
+    priorities.sort(key=lambda x: x["priority"])
+    return priorities
