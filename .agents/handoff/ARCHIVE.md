@@ -7,3 +7,7 @@
 ### [2026-10-21 17:00 UTC] 建立任務 `TASK-001`: 遷移批次 1：依賴與設定檔轉換（uv / pnpm / .env.example / Brewfile） (by `system`)
 - **狀態**: `open`
 - **相關範圍**: `legacy, legacy`
+
+### [2026-10-21 17:00 UTC] 建立任務 `TASK-002`: 遷移批次 2：config 層（設定、環境變數讀取） (by `system`)
+- **狀態**: `open`
+- **相關範圍**: `src/ndhu_course_rush/config/, legacy`
