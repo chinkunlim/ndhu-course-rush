@@ -20,6 +20,7 @@ ndhu-course-rush/
 │   │   ├── update_framework.py
 │   │   └── update_tree.py
 │   ├── handoff/                            # [交接紀錄] 頂部即時狀態看板 + 歷史交接時間軸，開工前必讀
+│   │   ├── ARCHIVE.md                      # [歷史交接歸檔] 超過 20 筆之舊交接紀錄自動歸檔
 │   │   └── LATEST.md                       # [即時交接看板] 目前分支、進行中/待接手任務、已完成與待辦事項
 │   ├── hooks/                              # [版本控管的 git hooks] 由 core.hooksPath 啟用（pre-commit、pre-push）
 │   │   ├── pre-commit
@@ -120,7 +121,6 @@ ndhu-course-rush/
 │   └── TEMPLATE_FEEDBACK.md
 ├── evals/
 │   └── EVALS.md
-├── legacy/                                 # [遷移中] 舊專案原始檔，逐批搬到新結構後刪除（見 docs/migration/MIGRATION.md）
 ├── scripts/                                # 【專案腳本】agentctl.py 是框架的單一入口；其餘放本專案自己的腳本
 │   ├── agentctl.py                         # [單一入口] 轉呼叫 .agents/bin/agentctl.py
 │   ├── audit_project.py
@@ -162,6 +162,7 @@ ndhu-course-rush/
 ├── CLAUDE.md                               # [Agent 轉接檔] Claude Code 入口，匯入 AGENTS.md (自動產生)
 ├── courses_info.md
 ├── GEMINI.md                               # [Agent 轉接檔] Gemini CLI 入口，指向 AGENTS.md (自動產生)
+├── LICENSE
 ├── main.py
 ├── pyproject.toml                          # [PEP 621 單一真相來源] Python 中繼資料、依賴分組、pytest 與 ruff 設定
 └── README.md                               # [唯一 README] 專案入口、快速開始與文件索引

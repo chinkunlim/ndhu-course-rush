@@ -39,16 +39,16 @@
 
 全部完成才算遷移成功（`python3 scripts/agentctl.py migration --verify` 會逐項檢查）：
 
-- [ ] `legacy/` 已刪除（所有檔案都搬到新結構或確認不需要）。
-- [ ] 舊資料已依 §4.5 複製到 `DATA_DIR`，程式透過 config 讀取路徑，專案資料夾內沒有資料檔。
-- [ ] 沒有 `requirements.txt`、`package-lock.json`、`yarn.lock`、`Pipfile`：依賴只在 `pyproject.toml` + `uv.lock`、`package.json` + `pnpm-lock.yaml`。
-- [ ] `python3 scripts/agentctl.py check` 全部通過（註解、分層、秘密、lint、mypy strict、目錄樹）。
-- [ ] 專案測試全部通過。
-- [ ] 所有遷移任務卡都是 `done`。
-- [ ] 模板的範例程式（`greeting` 相關的 services / domain / cli / api / 資料表 `greetings` 與其 Alembic revision、測試）已刪除或換成真正的程式。
-- [ ] `README.md` 改寫為這個專案的說明；`docs/architecture/ARCHITECTURE.md` 有系統概覽；主要功能在 `docs/specs/` 有規格。
-- [ ] 舊專案已知的問題記在 `docs/known-issues/`；遷移中的重要決策記在 `docs/adr/`。
-- [ ] `.env.example` 列出所有需要的變數（只有名稱）。
+- [x] `legacy/` 已刪除（所有檔案都搬到新結構或確認不需要）。
+- [x] 舊資料已依 §4.5 複製到 `DATA_DIR`，程式透過 config 讀取路徑，專案資料夾內沒有資料檔。
+- [x] 沒有 `requirements.txt`、`package-lock.json`、`yarn.lock`、`Pipfile`：依賴只在 `pyproject.toml` + `uv.lock`、`package.json` + `pnpm-lock.yaml`。
+- [x] `python3 scripts/agentctl.py check` 全部通過（註解、分層、秘密、lint、mypy strict、目錄樹）。
+- [x] 專案測試全部通過。
+- [x] 所有遷移任務卡都是 `done`。
+- [x] 模板的範例程式（`greeting` 相關的 services / domain / cli / api / 資料表 `greetings` 與其 Alembic revision、測試）已刪除或換成真正的程式。
+- [x] `README.md` 改寫為這個專案的說明；`docs/architecture/ARCHITECTURE.md` 有系統概覽；主要功能在 `docs/specs/` 有規格。
+- [x] 舊專案已知的問題記在 `docs/known-issues/`；遷移中的重要決策記在 `docs/adr/`。
+- [x] `.env.example` 列出所有需要的變數（只有名稱）。
 - [ ] 最後執行 `agentctl closeout`（本機對話紀錄＋交接看板記下遷移完成）。
 
 ## 3. 批次
@@ -140,10 +140,10 @@ uv tree
 | ☑ | `legacy/docs/PROMPT_TEMPLATES.md` | `docs/PROMPT_TEMPLATES.md` | docs |
 | ☑ | `legacy/docs/TOOLS.md` | `docs/specs/ 或 docs/adr/ 或 docs/known-issues/` | docs |
 | ☑ | `legacy/evals/README.md` | `evals/EVALS.md（全專案只有根目錄一份 README）` | docs |
-| ☐ | `legacy/.cursorrules` | `docs/standards/PROJECT_RULES.md（只留本專案特有的規則；各工具入口檔由 agentctl sync 產生）` | other |
-| ☐ | `legacy/.github/workflows/ci.yml` | `比對模板產生的 .github/workflows/ci.yml，只併入本專案特有的步驟` | other |
-| ☐ | `legacy/.vscode/launch.json` | `比對模板產生的 .vscode/，只保留本專案特有的 launch / settings` | other |
-| ☐ | `legacy/.vscode/settings.json` | `比對模板產生的 .vscode/，只保留本專案特有的 launch / settings` | other |
-| ☐ | `legacy/LICENSE` | `LICENSE（保留原授權）` | other |
-| ☐ | `legacy/Makefile` | `改用 agentctl / uv run / pnpm 指令，寫進 README；仍需要的腳本放 scripts/` | other |
-| ☐ | `legacy/uv.lock` | `依用途判斷（資料 → DATA_DIR，靜態資源 → web/ 或 src/<pkg>/）` | other |
+| ☑ | `legacy/.cursorrules` | `docs/standards/PROJECT_RULES.md（只留本專案特有的規則；各工具入口檔由 agentctl sync 產生）` | other |
+| ☑ | `legacy/.github/workflows/ci.yml` | `比對模板產生的 .github/workflows/ci.yml，只併入本專案特有的步驟` | other |
+| ☑ | `legacy/.vscode/launch.json` | `比對模板產生的 .vscode/，只保留本專案特有的 launch / settings` | other |
+| ☑ | `legacy/.vscode/settings.json` | `比對模板產生的 .vscode/，只保留本專案特有的 launch / settings` | other |
+| ☑ | `legacy/LICENSE` | `LICENSE（保留原授權）` | other |
+| ☑ | `legacy/Makefile` | `改用 agentctl / uv run / pnpm 指令，寫進 README；仍需要的腳本放 scripts/` | other |
+| ☑ | `legacy/uv.lock` | `依用途判斷（資料 → DATA_DIR，靜態資源 → web/ 或 src/<pkg>/）` | other |

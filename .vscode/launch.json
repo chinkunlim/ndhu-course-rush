@@ -6,11 +6,16 @@
       "type": "debugpy",
       "request": "launch",
       "module": "ndhu_course_rush.entrypoints.cli",
-      "args": [
-        "--name",
-        "Debug"
-      ],
+      "args": ["--query-only", "--non-interactive"],
       "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "ndhu-course-rush: Run Tests",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "unittest",
+      "args": ["discover", "-s", "tests", "-v"],
       "console": "integratedTerminal"
     }
   ]

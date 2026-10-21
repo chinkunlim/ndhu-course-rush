@@ -18,6 +18,7 @@ All notable changes to **ndhu-course-rush** are documented here
 
 ### Chore
 - chore(migration): convert dependencies and config templates (by `@Antigravity`)
+- chore(migration): finalize batch 7 and remove legacy directory (by `@Antigravity`)
 
 ## [0.1.0] - 2026-10-22
 ### Added

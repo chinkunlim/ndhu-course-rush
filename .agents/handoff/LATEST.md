@@ -5,21 +5,27 @@
 <!-- LIVE_STATE_START -->
 ## 📊 即時狀態看板 (Live Snapshot)
 
-- **最後更新時間**: `2026-10-21 17:20 UTC`
+- **最後更新時間**: `2026-10-21 17:25 UTC`
 - **最近操作 Agent**: `Antigravity`
 - **目前 Git 分支**: `main`
-- **最新 Git Commit**: `9f26471 test(migration): standardize test suite for config, parser, and CLI [agent:Antigravity]`
+- **最新 Git Commit**: `3ebe7b0 docs(migration): migrate architecture, ADRs, known issues, specs, and README [agent:Antigravity]`
 
 ### 🎯 進行中 / 待接手任務 (Active & Handed-Off Tasks)
 
 | 任務 | 狀態 | 目前/上一位 Agent | 建議接手 | 相關範圍 | 已完成 | 待辦與卡點 |
 |---|---|---|---|---|---|---|
-| **TASK-006**<br/>遷移批次 6：文件（README、規格、決策、已知問題） | 🟢 `in_progress` | `Antigravity` | `-` | `docs/PROMPT_TEMPLATES.md`, `docs/adr/`, `docs/architecture/ARCHITECTURE.md`, `docs/known-issues/`, `docs/specs/`, `docs/standards/PROJECT_RULES.md`, `evals/EVALS.md`, `legacy` | - | - |
-| **TASK-007**<br/>遷移批次 7：其他（資料、資源、需人工判斷） | ⚪ `open` | `-` | `-` | `docs/standards/PROJECT_RULES.md`, `legacy` | - | - |
+| **TASK-007**<br/>遷移批次 7：其他（資料、資源、需人工判斷） | 🟢 `in_progress` | `Antigravity` | `-` | `docs/standards/PROJECT_RULES.md`, `legacy` | - | - |
 
 <!-- LIVE_STATE_END -->
 
 ## 📜 交接與活動時間軸 (Handoff & Activity Timeline)
+
+### [2026-10-21 17:25 UTC] 認領任務 `TASK-007` (遷移批次 7：其他（資料、資源、需人工判斷）) (by `Antigravity`)
+- **相關範圍**: `docs/standards/PROJECT_RULES.md, legacy`
+
+### [2026-10-21 17:25 UTC] 完成任務 `TASK-006` — 遷移批次 6：文件（README、規格、決策、已知問題） (by `Antigravity`)
+- **狀態**: ✅ 已完成 (`done`)
+- **完成摘要**: 搬移並整理全套工程文件（README、7 項 ADR、5 項已知問題、SPEC-001、專案專屬規則與架構循序圖）
 
 ### [2026-10-21 17:20 UTC] 認領任務 `TASK-006` (遷移批次 6：文件（README、規格、決策、已知問題）) (by `Antigravity`)
 - **相關範圍**: `docs/PROMPT_TEMPLATES.md, docs/adr/, docs/architecture/ARCHITECTURE.md, docs/known-issues/, docs/specs/, docs/standards/PROJECT_RULES.md, evals/EVALS.md, legacy`
@@ -86,7 +92,3 @@
 ### [2026-10-21 17:00 UTC] 建立任務 `TASK-001`: 遷移批次 1：依賴與設定檔轉換（uv / pnpm / .env.example / Brewfile） (by `system`)
 - **狀態**: `open`
 - **相關範圍**: `legacy, legacy`
-
-### [2026-10-21 17:00 UTC] Initial Bootstrap (by `init_project`)
-- **狀態**: 專案已初始化（框架 v3.3.0）。
-- **下一步**: 檢視 `.agents/project.toml`，再用 `agentctl task create` 建立第一個任務。
