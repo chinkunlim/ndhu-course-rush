@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "ndhu-course-rush: CLI",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "ndhu_course_rush.entrypoints.cli",
+      "args": [
+        "--name",
+        "Debug"
+      ],
+      "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal"
+    }
+  ]
+}
