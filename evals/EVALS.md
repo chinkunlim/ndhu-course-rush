@@ -1,4 +1,4 @@
-# 提示詞評估集與搶課時延評測 (evals/README.md)
+# 提示詞評估集與搶課時延評測 (evals/EVALS.md)
 
 本目錄存放 LLM / Agent 提示詞評估集與系統延遲評測基準。
 

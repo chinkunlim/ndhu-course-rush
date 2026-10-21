@@ -49,8 +49,8 @@ sequenceDiagram
 ## 分層
 
 見 `.agents/project.toml` 的 `[architecture] layers` 與 [`ARCHITECTURE_RULES.md`](../standards/ARCHITECTURE_RULES.md)。
-- **entrypoints**: `cli.py` 與 `main.py`
+- **entrypoints**: `cli.py`, `course_cli.py` 與 `main.py`
 - **adapters**: 外部整合
 - **services**: `auth.py`, `browser.py`, `parser.py`, `selector.py`
 - **domain**: `Course`, `CoursePriority`
-- **config**: `AppConfig`, `settings.py`, `legacy_config.py`
+- **config**: `AppConfig`, `settings.py`, `legacy_config.py`, `logging_setup.py`

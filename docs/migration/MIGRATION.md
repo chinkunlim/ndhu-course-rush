@@ -49,7 +49,7 @@
 - [x] `README.md` 改寫為這個專案的說明；`docs/architecture/ARCHITECTURE.md` 有系統概覽；主要功能在 `docs/specs/` 有規格。
 - [x] 舊專案已知的問題記在 `docs/known-issues/`；遷移中的重要決策記在 `docs/adr/`。
 - [x] `.env.example` 列出所有需要的變數（只有名稱）。
-- [ ] 最後執行 `agentctl closeout`（本機對話紀錄＋交接看板記下遷移完成）。
+- [x] 最後執行 `agentctl closeout`（本機對話紀錄＋交接看板記下遷移完成）。
 
 ## 3. 批次
 

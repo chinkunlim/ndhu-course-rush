@@ -40,7 +40,7 @@ ndhu-course-rush/
 │   ├── specs/                   # 功能規格 (SPEC-001)
 │   └── standards/               # 工程規範與本專案專屬規則 (PROJECT_RULES.md)
 │
-├── scripts/                     # 專案腳本 (agentctl.py, auto_login.py)
+├── scripts/                     # 專案腳本 (agentctl.py, auto_login.py, audit_project.py)
 └── tests/                       # 單元測試套件
 ```
 

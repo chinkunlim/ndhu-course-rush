@@ -28,7 +28,7 @@
 ## 3. CI/CD 與自動化發布檢查提示詞
 ```text
 請執行專案健康檢查：
-1. 執行 uv sync 與 uv run pytest。
+1. 執行 uv sync 與 uv run python -m unittest discover -s tests -v。
 2. 檢查有無未脫敏之敏感資訊洩漏於 Markdown 或 log 檔案中。
-3. 驗證 Makefile 指令皆能正常運作。
+3. 驗證 agentctl check 與自動化測試皆能正常運作。
 ```
