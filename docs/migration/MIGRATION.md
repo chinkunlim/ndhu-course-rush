@@ -89,7 +89,7 @@ uv tree
 | ☑ | `legacy/.gitignore` | `pyproject.toml / package.json / .env.example（轉換後刪除舊檔）` | deps |
 | ☑ | `legacy/.python-version` | `pyproject.toml / package.json / .env.example（轉換後刪除舊檔）` | deps |
 | ☑ | `legacy/pyproject.toml` | `pyproject.toml / package.json / .env.example（轉換後刪除舊檔）` | deps |
-| ☐ | `legacy/src/ndhu_course_selector/tools/config.py` | `src/ndhu_course_rush/config/` | config |
+| ☑ | `legacy/src/ndhu_course_selector/tools/config.py` | `src/ndhu_course_rush/config/` | config |
 | ☐ | `legacy/audit_project.py` | `src/ndhu_course_rush/services/` | services |
 | ☐ | `legacy/auto_login.py` | `src/ndhu_course_rush/services/` | services |
 | ☐ | `legacy/src/ndhu_course_selector/__init__.py` | `src/ndhu_course_rush/services/` | services |

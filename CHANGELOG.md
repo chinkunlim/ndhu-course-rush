@@ -5,6 +5,9 @@ All notable changes to **ndhu-course-rush** are documented here
 
 ## [Unreleased]
 
+### Changed
+- refactor(config): integrate course rush settings and legacy loader (by `@Antigravity`)
+
 ### Chore
 - chore(migration): convert dependencies and config templates (by `@Antigravity`)
 

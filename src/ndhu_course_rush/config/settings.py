@@ -70,6 +70,11 @@ class AppConfig:
         timeout_seconds: Timeout for outgoing API calls.
         ollama_base_url: Local Ollama endpoint (always 127.0.0.1, never localhost / 0.0.0.0).
         data_dir: Root folder for all data, outside the project folder.
+        ndhu_username: Student ID username for NDHU course selection.
+        ndhu_password: Password for NDHU course selection.
+        login_url: Course selection system login URL.
+        rush_delay: Delay in seconds between rush attempts.
+        query_delay: Delay in seconds during course query operations.
     """
 
     app_env: str = "development"
@@ -78,6 +83,11 @@ class AppConfig:
     timeout_seconds: int = 15
     ollama_base_url: str = "http://127.0.0.1:11434"
     data_dir: Path = resolve_data_dir(DEFAULT_DATA_DIR)
+    ndhu_username: str = ""
+    ndhu_password: str = ""
+    login_url: str = "https://sys.ndhu.edu.tw/aa/class/subjselect/course_sele.aspx"
+    rush_delay: float = 0.05
+    query_delay: float = 0.15
 
     @property
     def input_dir(self) -> Path:
@@ -160,6 +170,11 @@ def load_config() -> AppConfig:
     """
     load_dotenv_file(PROJECT_ROOT / ".env")
     data_dir = resolve_data_dir(os.environ.get("DATA_DIR", DEFAULT_DATA_DIR))
+    username = os.environ.get("NDHU_USERNAME") or os.environ.get("USERNAME", "")
+    password = os.environ.get("NDHU_PASSWORD") or os.environ.get("PASSWORD", "")
+    login_url = os.environ.get("LOGIN_URL", "https://sys.ndhu.edu.tw/aa/class/subjselect/course_sele.aspx")
+    rush_delay = float(os.environ.get("RUSH_DELAY", "0.05"))
+    query_delay = float(os.environ.get("QUERY_DELAY", "0.15"))
     return AppConfig(
         app_env=os.environ.get("APP_ENV", "development").strip(),
         log_level=os.environ.get("LOG_LEVEL", "INFO").strip().upper(),
@@ -167,4 +182,9 @@ def load_config() -> AppConfig:
         timeout_seconds=int(os.environ.get("API_TIMEOUT_SECONDS", "15")),
         ollama_base_url=os.environ.get("OLLAMA_BASE_URL", "http://127.0.0.1:11434").strip().rstrip("/"),
         data_dir=data_dir,
+        ndhu_username=username.strip(),
+        ndhu_password=password.strip(),
+        login_url=login_url.strip(),
+        rush_delay=rush_delay,
+        query_delay=query_delay,
     )
