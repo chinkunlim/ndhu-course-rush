@@ -99,8 +99,8 @@ uv tree
 | ☑ | `legacy/src/ndhu_course_selector/core/parser.py` | `src/ndhu_course_rush/services/` | services |
 | ☑ | `legacy/src/ndhu_course_selector/core/selector.py` | `src/ndhu_course_rush/services/` | services |
 | ☑ | `legacy/src/ndhu_course_selector/tools/__init__.py` | `src/ndhu_course_rush/services/` | services |
-| ☐ | `legacy/main.py` | `src/ndhu_course_rush/entrypoints/` | entrypoints |
-| ☐ | `legacy/src/ndhu_course_selector/cli.py` | `src/ndhu_course_rush/entrypoints/` | entrypoints |
+| ☑ | `legacy/main.py` | `src/ndhu_course_rush/entrypoints/` | entrypoints |
+| ☑ | `legacy/src/ndhu_course_selector/cli.py` | `src/ndhu_course_rush/entrypoints/` | entrypoints |
 | ☐ | `legacy/tests/__init__.py` | `tests/` | tests |
 | ☐ | `legacy/tests/test_config.py` | `tests/` | tests |
 | ☐ | `legacy/tests/test_parser.py` | `tests/` | tests |
