@@ -2,12 +2,19 @@
 .env
 .env.*
 !.env.example
+.env.local
+config.txt
 # clasp login token; `.clasp.json` only holds the script ID and may be committed
 .clasprc.json
 *.pem
 *.key
 credentials.json
 service-account*.json
+
+# === Playwright & Browsers ===
+.playwright/
+test-results/
+playwright-report/
 
 # === Per-machine generated files (rebuilt by `agentctl doctor --fix` / `agentctl sync`) ===
 .claude/skills

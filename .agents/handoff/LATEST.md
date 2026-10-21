@@ -5,16 +5,16 @@
 <!-- LIVE_STATE_START -->
 ## 📊 即時狀態看板 (Live Snapshot)
 
-- **最後更新時間**: `2026-10-21 17:00 UTC`
-- **最近操作 Agent**: `system`
+- **最後更新時間**: `2026-10-21 17:07 UTC`
+- **最近操作 Agent**: `Antigravity`
 - **目前 Git 分支**: `main`
-- **最新 Git Commit**: `84b3357 chore(migrate): move existing project into legacy/, data excluded [agent:migrate_project]`
+- **最新 Git Commit**: `1257b37 chore(migrate): apply project template and migration plan (62 legacy files) [agent:migrate_project]`
 
 ### 🎯 進行中 / 待接手任務 (Active & Handed-Off Tasks)
 
 | 任務 | 狀態 | 目前/上一位 Agent | 建議接手 | 相關範圍 | 已完成 | 待辦與卡點 |
 |---|---|---|---|---|---|---|
-| **TASK-001**<br/>遷移批次 1：依賴與設定檔轉換（uv / pnpm / .env.example / Brewfile） | ⚪ `open` | `-` | `-` | `legacy`, `legacy` | - | - |
+| **TASK-001**<br/>遷移批次 1：依賴與設定檔轉換（uv / pnpm / .env.example / Brewfile） | 🟢 `in_progress` | `Antigravity` | `-` | `legacy`, `legacy` | - | - |
 | **TASK-002**<br/>遷移批次 2：config 層（設定、環境變數讀取） | ⚪ `open` | `-` | `-` | `src/ndhu_course_rush/config/`, `legacy` | - | - |
 | **TASK-003**<br/>遷移批次 3：services 層（業務流程） | ⚪ `open` | `-` | `-` | `src/ndhu_course_rush/services/`, `legacy` | - | - |
 | **TASK-004**<br/>遷移批次 4：entrypoints 層（CLI、HTTP、排程入口） | ⚪ `open` | `-` | `-` | `src/ndhu_course_rush/entrypoints/`, `legacy` | - | - |
@@ -25,6 +25,9 @@
 <!-- LIVE_STATE_END -->
 
 ## 📜 交接與活動時間軸 (Handoff & Activity Timeline)
+
+### [2026-10-21 17:07 UTC] 認領任務 `TASK-001` (遷移批次 1：依賴與設定檔轉換（uv / pnpm / .env.example / Brewfile）) (by `Antigravity`)
+- **相關範圍**: `legacy, legacy`
 
 ### [2026-10-21 17:00 UTC] 建立任務 `TASK-007`: 遷移批次 7：其他（資料、資源、需人工判斷） (by `system`)
 - **狀態**: `open`

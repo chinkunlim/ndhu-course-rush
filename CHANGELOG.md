@@ -5,6 +5,9 @@ All notable changes to **ndhu-course-rush** are documented here
 
 ## [Unreleased]
 
+### Chore
+- chore(migration): convert dependencies and config templates (by `@Antigravity`)
+
 ## [0.1.0] - 2026-10-22
 ### Added
 - Initial project scaffold (framework v3.3.0).

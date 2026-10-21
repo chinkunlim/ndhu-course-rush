@@ -4,13 +4,20 @@ version = "0.1.0"
 description = "AI-assisted software project with standard structure and agent handoff."
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []  # add with `uv add <package>` (never `pip install`)
+dependencies = [
+    "playwright>=1.40.0",
+    "python-dotenv>=1.0.0",
+]  # add with `uv add <package>` (never `pip install`)
 
 [project.scripts]
 ndhu-course-rush = "ndhu_course_rush.entrypoints.cli:main"
 
 [dependency-groups]
-dev = ["ruff>=0.6.0", "mypy>=1.11"]  # add with `uv add --dev <package>`
+dev = [
+    "ruff>=0.6.0",
+    "mypy>=1.11",
+    "pytest>=8.0.0",
+]  # add with `uv add --dev <package>`
 
 [build-system]
 requires = ["setuptools>=68.0"]
