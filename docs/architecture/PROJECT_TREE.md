@@ -113,6 +113,22 @@ ndhu-course-rush/
 │   │   ├── _TEMPLATE.md                    # 規格範本
 │   │   └── SPECS.md                        # 規格清單
 │   ├── standards/                          # [工程規範] 依任務載入 (Progressive Disclosure)
+│   │   ├── architecture/
+│   │   │   ├── layers.md
+│   │   │   └── workflow_parity.md
+│   │   ├── coding/
+│   │   │   ├── comments.md
+│   │   │   ├── data_guard.md
+│   │   │   └── principles.md
+│   │   ├── env/
+│   │   │   ├── data_dir_layout.md
+│   │   │   └── icloud_rules.md
+│   │   ├── testing/
+│   │   │   ├── empirical_evidence.md
+│   │   │   └── virtual_testing.md
+│   │   ├── web/
+│   │   │   ├── fastapi_mcp.md
+│   │   │   └── taste_design.md
 │   │   ├── ARCHITECTURE_RULES.md           # 分層依賴與系統架構守則
 │   │   ├── CODING_PRINCIPLES.md            # 註解規範、Karpathy 原則、SOLID、DRY、Atomic
 │   │   ├── ENVIRONMENT_AND_DEPENDENCIES.md # uv / pnpm / Brewfile / 127.0.0.1 環境與依賴規範
@@ -120,6 +136,7 @@ ndhu-course-rush/
 │   │   ├── LOCAL_AI_ENVIRONMENT.md
 │   │   ├── MULTI_AGENT_COLLABORATION.md    # Agent 輪流接力：開工、交接、收尾與溯源
 │   │   ├── PROJECT_RULES.md
+│   │   ├── STANDARDS.md
 │   │   └── TESTING_AND_QUALITY.md          # 測試金字塔與 DoD 驗收清單
 │   ├── PROMPT_TEMPLATES.md
 │   └── TEMPLATE_FEEDBACK.md
@@ -160,6 +177,7 @@ ndhu-course-rush/
 ├── .editorconfig
 ├── .env.example                            # [設定範本] 環境變數清單與預設值說明
 ├── .gitignore                              # [版控排除] 排除依賴、機密 .env、憑證與執行期快取
+├── .graphifyignore
 ├── .python-version                         # [Python 版本釘選] 供 uv / pyenv / mise 自動讀取
 ├── AGENTS.md                               # [AI 協作憲法・唯一規則來源] 所有 AI Agent 共用的開發原則與 Skills 路由
 ├── CHANGELOG.md                            # [版本歷史] commit 寫入 Unreleased；agentctl finish --tag 發布版本
