@@ -42,6 +42,10 @@ ndhu-course-rush/
 │   │   │   ├── scripts/
 │   │   │   │   └── review_guard.py
 │   │   │   └── SKILL.md
+│   │   ├── compliance-scanner/
+│   │   │   ├── scripts/
+│   │   │   │   └── scan_compliance.py
+│   │   │   └── SKILL.md
 │   │   ├── legacy-migration/
 │   │   │   ├── scripts/
 │   │   │   │   └── migration_status.py
