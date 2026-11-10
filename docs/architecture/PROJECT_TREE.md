@@ -122,7 +122,8 @@ ndhu-course-rush/
 │   │   │   └── principles.md
 │   │   ├── env/
 │   │   │   ├── data_dir_layout.md
-│   │   │   └── icloud_rules.md
+│   │   │   ├── icloud_rules.md
+│   │   │   └── install_and_update.md
 │   │   ├── testing/
 │   │   │   ├── empirical_evidence.md
 │   │   │   └── virtual_testing.md
