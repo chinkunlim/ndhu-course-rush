@@ -57,12 +57,11 @@ ndhu-course-rush/
 - [uv](https://github.com/astral-sh/uv) (極速 Python 套件管理器)
 - Google Chrome 瀏覽器
 
-### 2. 安裝依賴與驅動
+### 2. 一鍵安裝依賴與瀏覽器驅動
+執行環境初始化並安裝專案隔離虛擬環境與 Playwright 瀏覽器核心：
 ```bash
-# 同步安裝專案虛擬環境與依賴
-uv sync
-
-# 安裝 Playwright 瀏覽器核心
+python3 scripts/agentctl.py doctor --fix
+python3 scripts/agentctl.py setup --install
 uv run playwright install chromium
 ```
 
@@ -90,6 +89,21 @@ uv run python main.py
 # 方式 C：僅查詢預排課表不搶課
 uv run ndhu-course-rush --query-only
 ```
+
+---
+
+## 🔄 後期平滑更新 (Smooth Update)
+
+取得最新程式並同步虛擬環境依賴與瀏覽器核心：
+```bash
+git pull --ff-only
+uv sync
+uv run playwright install chromium
+python3 scripts/agentctl.py doctor
+```
+
+- **設定與課表保護**：更新流程不會覆蓋您本地的 `.env`（學號、密碼與自訂設定）、`courses_info.md` 志願序清單，以及專案目錄外的 `DATA_DIR`（含記錄與歷史產出）。
+- **架構健康檢查**：更新後可執行 `python3 scripts/agentctl.py scan` 確認整體環境與規範狀態。
 
 ---
 
